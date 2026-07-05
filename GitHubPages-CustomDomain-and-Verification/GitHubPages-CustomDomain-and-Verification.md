@@ -162,8 +162,5 @@ You can configure it. If problems happen, just temporarily flip the proxy button
     !verify-my-domain-with-github-with-dig-after-adding-content-to-cloudflare.png
     
 7. Back on GitHub (step 4) → Click **Verify**. Once it passes, your domain is locked to your account.
-    
-    !proof-of-owning-the-domain-to-github.png
-    
-
+    [](!proof-of-owning-the-domain-to-github.png)
 ---

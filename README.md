@@ -1,28 +1,32 @@
-# IT-Security-OneShots
+# IT-Support-Notes
 
-This repository is a collection of one-shot documentation based on my personal experiences and observations in IT and cybersecurity. Each entry focuses on a standalone topic, experiment, or finding that I have explored.
+Practical IT support documentation — real setup work and lab learning.
 
-## Purpose
+This repository collects hands-on IT support work: step-by-step documentation of
+tasks I've configured and problems I've worked through. Some entries document live
+infrastructure I run; others are test environments I built to investigate a
+specific question. Everything here reflects work I actually performed, not copied
+theory.
 
-The goal of this repository is to document and share insights from various IT and cybersecurity-related tests, issues, and findings. These topics are not necessarily related to each other but serve as a way to track and reflect on different aspects of security research and technical experimentation.
+## Scope
 
-## Structure
+Anything related to IT support — configuration, troubleshooting,and foundational skills — gets documented here as I work through it.
 
-Each folder represents a different topic, with relevant notes, scripts, and documentation included where necessary.
+## Contents
 
-## Disclaimer
+| Topic | Summary |
+| --- | --- |
+| GitHub Pages Custom Domain & Verification | Configuring a custom domain on my live GitHub Pages site and completing GitHub's domain verification. |
+| Email Authentication (SPF, DKIM, DMARC) | Setting up SPF, DKIM, and DMARC on my live business domain. |
+| Linux Fundamental Skills | Core Linux commands and concepts, worked through hands-on in my own environment. |
+| File Transfer Security: CMD vs Web Browser | A question that came up during cybersecurity lab work — I built my own test environment to compare command-line and browser-based file transfers from a security angle. |
 
-The content in this repository is based on personal experiments and research. It should not be considered as professional advice or best practices for security implementations.
+## How it's organized
 
-## Topics Covered
+Each topic lives in its own folder with its own walkthrough. Folders are
+self-contained, so any entry can be read on its own without the others.
 
-+ File Transfer Security CMD vs Web Browser
-+ [More topics to be added]
+## About
 
----
-
-Feel free to explore and discuss any findings!
-
-**Sangsongthong**
-| ***Hexterika Cyberlab***
-| ***Founder, CEO, and Sole Worker***
+Maintained by Hexterika Cyberlab, which offers IT and cybersecurity services to
+small businesses. Founder, CEO, and sole worker.
