@@ -33,7 +33,7 @@ Two separate ideas here, and it's easy to mix them up:
 
 ***In short:*** the field and the file always match each other; picking `www` vs apex just decides which one is your site's main address and which one redirects to it.
 
-***Step 2.*** Wait until the DNS verified it. The successful version has the green checked mark on it. If it throws an error, log into the Cloudflare dashboard to configure the DNS. 
+***Step 2.*** Wait until the DNS verified it. The successful version has the green checked mark on it. If it throws an error, log into the Cloudflare dashboard to configure the DNS.
 
 + Note that the Cloudflare DNS has to be configured for it to work. If it has not configured, GitHub will throw an error regardless. It doesn’t mean you broke the setup. It means you setup has not been completed so you need to switch to Cloudflare dashboard to setup the DNS first in order for this to work.
 
@@ -63,13 +63,13 @@ Here is the successful screenshot.
 
 ![add-dns-record-to-cloudflare.png](./images/add-dns-record-to-cloudflare.png)
 
-The `Type` field is where you choose `CNAME`, `A`, `TXT`, etc record. 
+The `Type` field is where you choose `CNAME`, `A`, `TXT`, etc record.
 
 The `Name` field, you usually type `@` here or type `hexterikacyberlab.com` if the system does not recognize the `@` . In my past experience, some provider did not recognize the `@` sign right away. However, Cloudflare saw and accepted it immediately.
 
 The `Target` field, type your IP here one at a time or your other value.
 
-The `Proxy Status` toggle, toggle it to the grey cloud for now. Cloudflare will show a security recommendation warning. Ignore it for now. Adding it in this step might causes some setup problem later. Finish the requirement setting first before coming back here to add proxy. In my example, I created a static website with HTML/CSS, no database, no login page, etc. My site’s attack vectors are narrow. Adding proxy will not help increasing the security much, but the proxy itself sits between the visitors and GitHub that’s why GitHub might have trouble seeing the website due to the proxy. If this happens, simply switch back to the grey cloud temporarily. 
+The `Proxy Status` toggle, toggle it to the grey cloud for now. Cloudflare will show a security recommendation warning. Ignore it for now. Adding it in this step might causes some setup problem later. Finish the requirement setting first before coming back here to add proxy. In my example, I created a static website with HTML/CSS, no database, no login page, etc. My site’s attack vectors are narrow. Adding proxy will not help increasing the security much, but the proxy itself sits between the visitors and GitHub that’s why GitHub might have trouble seeing the website due to the proxy. If this happens, simply switch back to the grey cloud temporarily.
 
 The `Comment` field is optional. I kept my own note for each record item for reference later.
 
@@ -107,11 +107,11 @@ The screenshot below shows the verification succession.
 
 ### **Now you are done with all the requirement setup.**
 
-Adding Cloudflare proxies is optional and will not help much with your static website. It will only helps with cache download and can cause problems when GitHub re-issue the SSL/TLS which is something to watch out for. 
+Adding Cloudflare proxies is optional and will not help much with your static website. It will only helps with cache download and can cause problems when GitHub re-issue the SSL/TLS which is something to watch out for.
 
 You can configure it. If problems happen, just temporarily flip the proxy button back from orange to grey until it works again and then make it works.
 
-### The How To:
+### The How To
 
 1. Cloudflare → **SSL/TLS → set encryption mode to "Full"** *first*. (Skip this and you get infinite redirect loops.)
 2. Then flip the records to orange: the `www` CNAME and the four `@` A records.
