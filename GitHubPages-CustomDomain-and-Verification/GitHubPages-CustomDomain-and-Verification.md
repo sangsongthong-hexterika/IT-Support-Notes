@@ -1,20 +1,20 @@
-# Set A Custom Domain On My GitHub Page & Proof Ownership
+# Set A Custom Domain On My GitHub Pages Site & Prove Ownership
 
-My domain is on CloudFlare: `hexterikacyberlab.com`
+My domain is on Cloudflare: `hexterikacyberlab.com`
 
 My website is on GitHub.
 
 ## Objective
 
-+ Make `https://hexterikacyberlab.com/` features my github website.
+Make `https://www.hexterikacyberlab.com/` serve my GitHub website.
 
-***The setup takes place on both Cloudflare and GitHub. You need to setup on both. The guide below tells you one platform at the time.***
+The setup takes place on both Cloudflare and GitHub. You need to set up both. The guide below covers one platform at a time.
 
 ---
 
 ## The Setup On GitHub Side
 
-***Step 1.*** On GitHub, go to the correct repo. Click on settings > Page > Add `www.hexterikacyberlab.com` and clicked `save`.
+***Step 1.*** On GitHub, go to the correct repo. Click on Settings > Page > Add `www.hexterikacyberlab.com` and clicked `save`.
 
 ![github-dns-verification-v2.png](./images/github-dns-verification-v2.png)
 
@@ -27,21 +27,21 @@ Your custom domain can be set two ways:
 
 Two separate ideas here, and it's easy to mix them up:
 
-+ **The Custom domain field (on GitHub) and the `CNAME` file (in your repo) must always hold the *same* value.** They're not two independent settings — they're one value shown in two places. Typing into GitHub's field rewrites the `CNAME` file, and editing the `CNAME` file updates the field. If they ever disagree, something is out of sync (mine did, because of leftover records from an old domain — I fixed it by making both say `www.hexterikacyberlab.com`).
++ **The Custom domain field (on GitHub) and the `CNAME` file (in your repo) must always hold the *same* value.** They're not two independent settings — they're one value shown in two places. Typing into GitHub's field rewrites the `CNAME` file, and editing the `CNAME` file updates the field. If they ever disagree, something is out of sync (mine was, because of leftover records from an old domain — I fixed it by making both say `www.hexterikacyberlab.com`).
 
 + **Whether that shared value is `www` or apex is your choice.** GitHub recommends `www`, because a `www` subdomain isn't affected if GitHub ever changes its server IP addresses, so it's the more stable option. The apex version works fine too. As long as you've set up DNS for both (the `www` CNAME record *and* the apex A records), GitHub automatically redirects one to the other — so visitors reach your site either way. I chose `www` to follow GitHub's recommendation.
 
 ***In short:*** the field and the file always match each other; picking `www` vs apex just decides which one is your site's main address and which one redirects to it.
 
-***Step 2.*** Wait until the DNS verified it. The successful version has the green checked mark on it. If it throws an error, log into the Cloudflare dashboard to configure the DNS.
+***Step 2.*** Wait until the DNS verified it. The successful verification has the green checked mark on it. If it throws an error, log into the Cloudflare dashboard to configure the DNS.
 
-+ Note that the Cloudflare DNS has to be configured for it to work. If it has not configured, GitHub will throw an error regardless. It doesn’t mean you broke the setup. It means you setup has not been completed so you need to switch to Cloudflare dashboard to setup the DNS first in order for this to work.
++ Note that the Cloudflare DNS has to be configured for this to work. If it has not been configured, GitHub will throw an error regardless. It doesn't mean you broke the setup. It means your setup has not been completed yet, so you need to switch to the Cloudflare dashboard and set up the DNS first in order for this to work.
 
 A successful attempt screenshot.
 
 ![github-dns-check-success-v2.png](./images/github-dns-check-success-v2.png)
 
-***Step 3.*** Once the DNS is verified (shown as the green check mark in the screenshot 2b, wait until GitHub gives you the SSL/TLS certificate. This can take a few minutes to 24 hours. If after 24 hours has and you still cannot tick the box to apply the SSL/TLS, this is when you need to worry and troubleshoot.
+***Step 3.*** Once the DNS is verified (shown as the green check mark in the screenshot above), wait until GitHub issues you the SSL/TLS certificate. This can take anywhere from a few minutes to 24 hours. If 24 hours have passed and you still cannot tick the box to apply the SSL/TLS, that's when you need to worry and troubleshoot.
 
 Here is the successful screenshot.
 
@@ -55,7 +55,7 @@ Here is the successful screenshot.
 
 ![cloudflare-dashboard-to-dns-config.png](./images/cloudflare-dashboard-to-dns-config.png)
 
-***Step 2.*** On the DNS configuration screen, click `Add record`. If this is your fresh configuration after you got the domain, it is likely going to be empty. I took the screenshots after I have done some setup so it is not empty.
+***Step 2.*** On the DNS configuration screen, click `Add record`. If this is a fresh configuration right after you got the domain, the list is likely going to be empty. I took the screenshots after I had already done some setup, so mine is not empty.
 
 ![cloudflare-dns-record-setup-hc-1.png](./images/cloudflare-dns-record-setup-hc-1.png)
 
@@ -65,17 +65,17 @@ Here is the successful screenshot.
 
 The `Type` field is where you choose `CNAME`, `A`, `TXT`, etc record.
 
-The `Name` field, you usually type `@` here or type `hexterikacyberlab.com` if the system does not recognize the `@` . In my past experience, some provider did not recognize the `@` sign right away. However, Cloudflare saw and accepted it immediately.
+The `Name` field, you usually type `@` here or type `hexterikacyberlab.com` if the system does not recognize the `@` . In my past experience, some provider did not recognize the `@` sign right away. Cloudflare, however, saw and accepted it immediately.
 
 The `Target` field, type your IP here one at a time or your other value.
 
-The `Proxy Status` toggle, toggle it to the grey cloud for now. Cloudflare will show a security recommendation warning. Ignore it for now. Adding it in this step might causes some setup problem later. Finish the requirement setting first before coming back here to add proxy. In my example, I created a static website with HTML/CSS, no database, no login page, etc. My site’s attack vectors are narrow. Adding proxy will not help increasing the security much, but the proxy itself sits between the visitors and GitHub that’s why GitHub might have trouble seeing the website due to the proxy. If this happens, simply switch back to the grey cloud temporarily.
+For the `Proxy Status` toggle, set it to the grey cloud for now. Cloudflare will show a security recommendation warning. Ignore it for now. Enabling the proxy at this step might cause some setup problems later. Finish the required setup first before coming back here to enable the proxy. In my case, I created a static website with HTML/CSS — no database, no login page, etc. My site's attack vectors are narrow. Adding the proxy will not increase security much, but the proxy itself sits between the visitors and GitHub, which is why GitHub might have trouble seeing the website through it. If this happens, simply switch back to the grey cloud temporarily.
 
-The `Comment` field is optional. I kept my own note for each record item for reference later.
+The `Comment field` is optional. I kept my own note on each record for reference later.
 
 Note that some fields change slightly when the `Type` value changes.
 
-Here are the info to add. The IPv4 address I added are from GitHub.
+Here are the records to add. The IPv4 addresses I added are from GitHub.
 
 | No. | Type | Name | Target / IPv4 Address | Proxy |
 | --- | --- | --- | --- | --- |
@@ -93,23 +93,23 @@ So how does GitHub know *which* of my repos to serve? That's the job of the `CNA
 
 In short: **DNS gets the traffic to GitHub; the `CNAME` file inside the repo tells GitHub which repo to serve.** The two do different jobs — that's why you point DNS at the host, not the repo.
 
-***Step 4.*** Verify the setting with `dig` on your terminal on your computer.
+***Step 4.*** Verify the setting with `dig` in the terminal on your computer.
 
 ***Command 1:*** `dig www.hexterikacyberlab.com +noall +answer`
 
 ***Command 2:*** `dig hexterikacyberlab.com +noall +answer -t A`
 
-The screenshot below shows the verification succession.
+The screenshot below shows a successful verification.
 
 ![dig-result-hc-dns-verification-1.png](./images/dig-result-hc-dns-verification-1.png)
 
 ---
 
-### **Now you are done with all the requirement setup.**
+### Now you are done with all the required setup
 
-Adding Cloudflare proxies is optional and will not help much with your static website. It will only helps with cache download and can cause problems when GitHub re-issue the SSL/TLS which is something to watch out for.
+Adding the Cloudflare proxy is optional and will not help much with a static website. It only helps with caching, and it can cause problems when GitHub re-issues the SSL/TLS certificate — which is something to watch out for.
 
-You can configure it. If problems happen, just temporarily flip the proxy button back from orange to grey until it works again and then make it works.
+You can still configure it. If problems happen, just temporarily flip the proxy toggle back from orange to grey until everything works again, then turn it back on.
 
 ### The How To
 
@@ -120,7 +120,7 @@ You can configure it. If problems happen, just temporarily flip the proxy button
 
 ---
 
-## Now This is a high stakes move. Domain Verification
+## Now, This is a high stakes move: Domain Verification
 
 ## Domain Verification
 
@@ -128,11 +128,11 @@ Note that this is NOT the same as the setup above. The setup above is the DNS ve
 
 + **"DNS check successful"** (what you saw) = GitHub confirmed your DNS *points at* Pages. It's about routing. ✅ done. —> This is what you did above.
   
-+ **Domain verification** = you *prove ownership* of `hexterikacyberlab.com` to your GitHub account, so no other GitHub account can ever attach your domain to their repo. It's about *ownership lock*, and it's a separate flow with its own `TXT` record. —> This is what you are going to do here.
++ **Domain verification** = you *prove ownership* of `hexterikacyberlab.com` to your GitHub account, so no other GitHub account can ever attach your domain to their repo. It's about an *ownership lock*, and it's a separate flow with its own `TXT` record. —> This is what you are going to do here.
 
-## How Verify Your Domain To GitHub (Proof Domain Ownership)
+## How Verify Your Domain With GitHub (Proof Domain Ownership)
 
-***Step 1.*** GitHub → click your profile (top right) → **Settings** (your *account* settings, not the repo).
+***Step 1.*** GitHub → click your profile (top right) → **Settings** (your *account* settings, not the repo's).
 
 ![verify-my-domain-on-github-1.png](./images/verify-my-domain-on-github-1.png)
 
@@ -156,7 +156,7 @@ Note that this is NOT the same as the setup above. The setup above is the DNS ve
 
 ![verify-my-domain-on-github-by-adding-github-verification-content-to-cloudflare-1.png](./images/verify-my-domain-on-github-by-adding-github-verification-content-to-cloudflare-1.png)
 
-***Step 6.*** Verify on my terminal
+***Step 6.*** Verify in your terminal
 
 ***Command:*** `dig _github-pages-challenge-sangsongthong-hexterika.hexterikacyberlab.com +noall +answer -t TXT`
 
