@@ -30,3 +30,11 @@ self-contained, so any entry can be read on its own without the others.
 
 Maintained by Hexterika Cyberlab, which offers IT and cybersecurity services to
 small businesses. Founder, CEO, and sole worker.
+
+## Third-Party Content
+
+This repository may include screenshots, trademarks, logos, product names, interface elements, or other materials from third-party operating systems, software, hardware vendors, cloud services, and IT platforms used for educational, documentation, and professional portfolio purposes.
+
+Such materials remain the property of their respective owners.
+
+The MIT License applies only to the original content created for this repository and does not grant rights to third-party intellectual property.
