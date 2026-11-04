@@ -4,21 +4,21 @@
 
 ### SPF
 
-- **What this record tells other mail servers:** [ANSWER PENDING]
-- **What I chose, and why:** [ANSWER PENDING]
-- **How I checked it worked:** [ANSWER PENDING]
+- **What this record tells other mail servers:** Which servers are allowed to send email for hexterikacyberlab.com. My record allows only Zoho's mail servers; mail from anywhere else is marked as suspicious (`~all`, soft fail).
+- **What I chose, and why:** `v=spf1 include:zohomail.com ~all`. Zoho is my only sender, so it is the only service listed.
+- **How I checked it worked:** Zoho's admin console showed SPF as verified, and a public DNS lookup returns the record.
 
 ### DKIM
 
-- **What this record tells other mail servers:** [ANSWER PENDING]
-- **What I chose, and why:** [ANSWER PENDING]
-- **How I checked it worked:** [ANSWER PENDING]
+- **What this record tells other mail servers:** The public key for checking the digital signature Zoho adds to every email I send. If the signature matches, the email really came from my domain and was not changed in transit.
+- **What I chose, and why:** A 2048-bit key with the selector `zoho-mail`, added to Cloudflare by hand instead of letting Zoho log into my DNS. It is a one-time setup, and manual entry avoids leaving a third party with ongoing access to my DNS.
+- **How I checked it worked:** Zoho's admin console showed DKIM as verified, and a DNS lookup of `zoho-mail._domainkey.hexterikacyberlab.com` returns the key.
 
 ### DMARC
 
-- **What this record tells other mail servers:** [ANSWER PENDING]
-- **What I chose, and why:** [ANSWER PENDING]
-- **How I checked it worked:** [ANSWER PENDING]
+- **What this record tells other mail servers:** What to do with email that claims to be from my domain but fails SPF or DKIM, and where to send reports about it.
+- **What I chose, and why:** `p=none` (monitor only, deliver anyway) as a baseline for a new mailbox, with summary and failure reports sent to my legal@ alias. Once the reports show my real mail passing, the policy can move to `quarantine` or `reject`.
+- **How I checked it worked:** Zoho's admin console showed DMARC as verified, and a DNS lookup of `_dmarc.hexterikacyberlab.com` returns the record.
 
 ## Setup Walkthrough
 
