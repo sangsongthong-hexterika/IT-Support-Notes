@@ -122,7 +122,7 @@ The below is the successful of DMARC adding checked from Zoho side.
 
 ![zoho-dmarc-4.png](./images/zoho-dmarc-4.png)
 
-## Adding Aliases -> Set them up before DMRAC
+## Adding Aliases -> Set them up before DMARC
 
 This step is related to DMARC.
 
