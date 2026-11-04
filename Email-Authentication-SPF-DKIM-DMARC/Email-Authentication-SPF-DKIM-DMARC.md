@@ -1,4 +1,26 @@
-# Set Up A Custom Domain Business Email Inbox
+# Email Authentication: SPF, DKIM and DMARC
+
+## How Each Record Works
+
+### SPF
+
+- **What this record tells other mail servers:** [ANSWER PENDING]
+- **What I chose, and why:** [ANSWER PENDING]
+- **How I checked it worked:** [ANSWER PENDING]
+
+### DKIM
+
+- **What this record tells other mail servers:** [ANSWER PENDING]
+- **What I chose, and why:** [ANSWER PENDING]
+- **How I checked it worked:** [ANSWER PENDING]
+
+### DMARC
+
+- **What this record tells other mail servers:** [ANSWER PENDING]
+- **What I chose, and why:** [ANSWER PENDING]
+- **How I checked it worked:** [ANSWER PENDING]
+
+## Setup Walkthrough
 
 **Step 1.** Verify the domain with zoho in zohomail admin console.
 
